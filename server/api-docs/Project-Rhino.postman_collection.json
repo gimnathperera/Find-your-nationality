@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "cf07103f-5dff-4cda-aaf0-effb0900dd64",
+		"name": "Project-Rhino",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET nationality ",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIn0sImlhdCI6MTYxNjc4Mjk5OSwiZXhwIjoxNjE2Nzg2NTk5fQ.XiW_TVoZ0g9jzxZEFBYJMWSi719dpBN1qAD-umvvypw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/nationality/roxy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"nationality",
+						"roxy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
