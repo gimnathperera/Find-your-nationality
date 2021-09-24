@@ -22,6 +22,7 @@ const SecurityRoute = {
         return response.success(req, res, token, 'Token received successfully');
       });
     } catch (err) {
+      console.log('>>===>> >>===>> err', err)
       return response.fail(req, res, response.message.server_error, null, err);
     }
   }

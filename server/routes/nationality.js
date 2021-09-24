@@ -12,31 +12,41 @@ const NationalityRoutes = {
     try {
       const { name } = req.params;
       //get nationality prediction by provided name
-      const nationalityResponse = await axios.get(process.env.NATIONALITY_WEB_URL, {
-        params: { name }
-      });
-
+      const nationalityResponse = await axios.get(
+        process.env.NATIONALITY_WEB_URL,
+        {
+          params: { name },
+        }
+      );
+      // console.log(nationalityResponse.data);
       if (nationalityResponse.data) {
         let countryList = [];
-        const promises = nationalityResponse.data.country.map(async (country) => {
-          //get required country data providing country shortCode
-          const countryData = await axios.get(
-            `${process.env.REST_COUNTRIES_WEB_URL}/${ENDPOINTS.GET_COUNTRY_DATA}/${country.country_id}`
-          );
+        const promises = nationalityResponse.data.country.map(
+          async (country) => {
+            //get required country data providing country shortCode
+            // const countryData = await axios.get(
+            //   `${process.env.REST_COUNTRIES_WEB_URL}/${ENDPOINTS.GET_COUNTRY_DATA}/${country.country_id}`
+            // );
 
-          let _data = {
-            code: country.country_id,
-            probability: country.probability,
-            name: countryData.data.name,
-            flag: countryData.data.flag
-          };
+            let _data = {
+              code: country.country_id,
+              probability: country.probability,
+              name: country.country_id,
+              flag: `https://www.countryflags.io/${country.country_id}/flat/64.png`,
+            };
 
-          countryList.push(_data);
-        });
+            countryList.push(_data);
+          }
+        );
 
         await Promise.all(promises);
 
-        return response.success(req, res, countryList, 'Data received successfully');
+        return response.success(
+          req,
+          res,
+          countryList,
+          'Data received successfully'
+        );
       } else {
         return response.fail(
           req,
@@ -47,8 +57,9 @@ const NationalityRoutes = {
         );
       }
     } catch (err) {
+      console.log('>>===>> >>===>> err', err.message);
       return response.fail(req, res, response.message.server_error, null, err);
     }
-  }
+  },
 };
 module.exports = NationalityRoutes;

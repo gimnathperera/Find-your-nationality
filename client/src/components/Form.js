@@ -21,8 +21,6 @@ const Form = (props) => {
 
         await fetchNationlities(name);
         setLoading(false);
-
-        setName('');
       }
     } catch (err) {
       setError('Something went wrong');
@@ -53,6 +51,7 @@ const Form = (props) => {
                 type='button'
                 className='btn btn-primary rounded submit p-3 px-5 hvr-shrink'
                 onClick={onSubmit}
+                style={{ marginLeft: '80px' }}
               >
                 {!loading ? (
                   <>Get Started</>
